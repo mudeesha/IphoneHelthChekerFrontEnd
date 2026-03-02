@@ -77,7 +77,7 @@ export function UploadArea() {
     }
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (!uploadedFile) return;
 
     if (!user) {
@@ -94,7 +94,14 @@ export function UploadArea() {
       title: 'Upload successful',
       description: 'Your report is being processed...',
     });
-    router.push('/dashboard/upload');
+    
+    // Store the file data for the report page
+    localStorage.setItem('pendingReport', JSON.stringify({
+      fileName: uploadedFile.name,
+      uploadedAt: new Date().toISOString(),
+    }));
+    
+    router.push('/home/report');
   };
 
   return (
