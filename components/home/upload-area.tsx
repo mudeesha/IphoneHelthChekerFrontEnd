@@ -109,32 +109,45 @@ export function UploadArea() {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`relative rounded-lg overflow-hidden transition-all duration-150 cursor-pointer ${
+        className={`relative rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer group ${
           isDragging
-            ? 'bg-[#2C2C2E] border border-[#3A3A3C]'
-            : 'bg-[#1C1C1E] border border-[#2C2C2E] hover:border-[#3A3A3C]'
+            ? 'bg-gradient-to-br from-[#0A84FF]/30 to-[#0A84FF]/10 border border-[#0A84FF]/50 shadow-2xl'
+            : 'bg-gradient-to-br from-[#2C2C2E]/30 to-[#1C1C1E]/50 border border-[#2C2C2E] hover:border-[#0A84FF]/40 hover:shadow-2xl'
         }`}
         style={{
-          boxShadow: isDragging ? '0 4px 20px rgba(0,0,0,0.4)' : '0 1px 3px rgba(0,0,0,0.2)',
+          boxShadow: isDragging 
+            ? '0 0 30px rgba(10, 132, 255, 0.3), inset 0 1px 0 rgba(255,255,255,0.1)' 
+            : 'inset 0 1px 0 rgba(255,255,255,0.05)',
+          transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
-        <div className="px-12 md:px-16 py-20 md:py-24 text-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#000000]/20 pointer-events-none" />
+        
+        <div className="px-12 md:px-16 py-20 md:py-24 text-center relative z-10">
           {!uploadedFile ? (
             <>
               <div className="mb-8 flex justify-center">
-                <div className="p-4 bg-[#2C2C2E] rounded-lg">
-                  <Upload className="w-12 h-12 text-[#A0A0A0]" strokeWidth={1.5} />
+                <div className={`p-5 rounded-2xl transition-all duration-300 ${
+                  isDragging 
+                    ? 'bg-[#0A84FF]/30 border border-[#0A84FF]/50 scale-110' 
+                    : 'bg-gradient-to-br from-[#2C2C2E] to-[#1C1C1E] border border-[#3A3A3C] group-hover:border-[#0A84FF]/40 group-hover:scale-105'
+                }`}>
+                  <Upload className={`w-12 h-12 transition-all duration-300 ${
+                    isDragging 
+                      ? 'text-[#0A84FF]' 
+                      : 'text-[#A0A0A0] group-hover:text-[#0A84FF]'
+                  }`} strokeWidth={1.5} />
                 </div>
               </div>
-              <h3 className="text-3xl font-semibold text-white mb-3" style={{ lineHeight: 1.2 }}>
+              <h3 className="text-3xl font-semibold text-white mb-3 transition-colors duration-300 group-hover:text-[#0A84FF]" style={{ lineHeight: 1.2 }}>
                 Upload your analytics
               </h3>
-              <p className="text-[#8E8E93] mb-8 text-lg" style={{ lineHeight: 1.5 }}>
+              <p className="text-[#8E8E93] mb-8 text-lg group-hover:text-[#A0A0A0] transition-colors duration-300" style={{ lineHeight: 1.5 }}>
                 .ips, .json, or .txt files
               </p>
               <Button
                 onClick={() => fileInputRef.current?.click()}
-                className="bg-[#0A84FF] hover:bg-[#409CFF] text-white px-8 py-3 rounded-lg font-semibold inline-flex items-center justify-center text-lg transition-colors duration-150"
+                className="bg-gradient-to-r from-[#0A84FF] to-[#0A84FF]/80 hover:from-[#409CFF] hover:to-[#409CFF]/80 text-white px-8 py-3 rounded-xl font-semibold inline-flex items-center justify-center text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#0A84FF]/30 hover:scale-105 active:scale-95"
               >
                 Choose File
               </Button>
@@ -149,8 +162,8 @@ export function UploadArea() {
           ) : (
             <>
               <div className="mb-8 flex justify-center">
-                <div className="p-4 bg-[#2C2C2E] rounded-lg">
-                  <File className="w-12 h-12 text-[#A0A0A0]" strokeWidth={1.5} />
+                <div className="p-5 bg-gradient-to-br from-[#2C2C2E] to-[#1C1C1E] border border-[#3A3A3C] rounded-2xl">
+                  <File className="w-12 h-12 text-[#0A84FF]" strokeWidth={1.5} />
                 </div>
               </div>
               <h3 className="text-2xl font-semibold text-white mb-2">
@@ -162,13 +175,13 @@ export function UploadArea() {
               <div className="flex gap-3 justify-center">
                 <Button
                   variant="outline"
-                  className="border border-[#3A3A3C] text-[#0A84FF] hover:bg-[rgba(255,255,255,0.05)] px-6 py-3 rounded-lg font-semibold text-lg transition-colors duration-150"
+                  className="border border-[#3A3A3C] text-[#A0A0A0] hover:text-[#0A84FF] hover:border-[#0A84FF]/40 hover:bg-[rgba(10,132,255,0.05)] px-6 py-3 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 active:scale-95"
                   onClick={() => setUploadedFile(null)}
                 >
                   Change
                 </Button>
                 <Button
-                  className="bg-[#0A84FF] hover:bg-[#409CFF] text-white px-6 py-3 rounded-lg font-semibold text-lg transition-colors duration-150"
+                  className="bg-gradient-to-r from-[#0A84FF] to-[#0A84FF]/80 hover:from-[#409CFF] hover:to-[#409CFF]/80 text-white px-6 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#0A84FF]/30 hover:scale-105 active:scale-95"
                   onClick={handleUpload}
                 >
                   {user ? 'Analyze' : 'Sign In & Analyze'}

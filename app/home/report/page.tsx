@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FreeReportView } from '@/components/dashboard/free-report-view';
 import { PremiumReportView } from '@/components/home/premium-report-view';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Download, Upload } from 'lucide-react';
 import Link from 'next/link';
 
 interface FreeReportData {
@@ -54,6 +54,7 @@ type ReportData = FreeReportData | PremiumReportData;
 
 export default function HomeReportPage() {
   const router = useRouter();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [reportData, setReportData] = useState<ReportData | null>(null);
   const [isPremium, setIsPremium] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -236,6 +237,60 @@ export default function HomeReportPage() {
     }
   };
 
+  const handleExportPDF = () => {
+    if (!reportData) return;
+
+    try {
+      const docContent = `
+DEVICE REPORT
+${new Date(uploadDate).toLocaleDateString()}
+
+Device: ${reportData.deviceName}
+iOS Version: ${reportData.iosVersion}
+Stability Score: ${reportData.stabilityScore}%
+
+SUMMARY
+Memory Warnings: ${reportData.totalMemoryWarnings}
+Total Crashes: ${reportData.totalCrashes}
+Thermal Warnings: ${reportData.totalThermalWarnings}
+Restarts: ${reportData.totalRestarts}
+
+${isPremium ? 'Premium Report Details' : 'For detailed analysis, upgrade to Premium'}
+
+Generated: ${new Date().toLocaleString()}
+      `;
+
+      const element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(docContent));
+      element.setAttribute('download', `report-${reportData.deviceName}-${new Date().getTime()}.txt`);
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+    } catch (err) {
+      console.error('Error exporting report:', err);
+    }
+  };
+
+  const handleImportPDF = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.currentTarget.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      const validExtensions = ['.pdf', '.txt', '.json'];
+      const fileName = file.name.toLowerCase();
+      
+      if (validExtensions.some((ext) => fileName.endsWith(ext))) {
+        // Handle PDF import - in a real app, this would parse the PDF
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          console.log('File imported:', file.name);
+          // Toast notification could be added here
+        };
+        reader.readAsText(file);
+      }
+    }
+  };
+
   if (isLoading) {
     return (
       <main className="min-h-screen bg-[#000000]">
@@ -308,13 +363,36 @@ export default function HomeReportPage() {
             </div>
             <div className="text-right">
               <p className="text-[#8E8E93] text-sm mb-2">Stability Score</p>
-              <div className={`text-5xl font-bold ${
+              <div className={`text-5xl font-bold mb-4 ${
                 reportData.stabilityScore >= 90 ? 'text-[#30D158]' :
                 reportData.stabilityScore >= 70 ? 'text-[#FFD60A]' :
                 'text-[#FF453A]'
               }`}>
                 {reportData.stabilityScore}
                 <span className="text-lg">%</span>
+              </div>
+              <div className="flex gap-2 justify-end">
+                <Button
+                  onClick={handleExportPDF}
+                  className="bg-[#0A84FF]/20 hover:bg-[#0A84FF]/30 border border-[#0A84FF]/40 text-[#0A84FF] rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 flex items-center gap-2"
+                >
+                  <Download size={16} />
+                  Export
+                </Button>
+                <Button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="bg-[#0A84FF]/20 hover:bg-[#0A84FF]/30 border border-[#0A84FF]/40 text-[#0A84FF] rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 flex items-center gap-2"
+                >
+                  <Upload size={16} />
+                  Import
+                </Button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".pdf,.txt,.json"
+                  onChange={handleImportPDF}
+                  className="hidden"
+                />
               </div>
             </div>
           </div>
