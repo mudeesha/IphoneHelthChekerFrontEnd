@@ -43,24 +43,24 @@ export default function BillingPage() {
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">Billing</h1>
-          <p className="text-slate-400">Manage your subscription and payments</p>
+          <p className="text-[#A0A0A0]">Manage your subscription and payments</p>
         </div>
 
-        <Card className="bg-slate-900 border-slate-700">
+        <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <AlertCircle className="text-yellow-400" size={20} />
               You are on the Free Plan
             </CardTitle>
-            <CardDescription>No billing information on file</CardDescription>
+            <CardDescription className="text-[#8E8E93]">No billing information on file</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-slate-300">
+            <p className="text-[#A0A0A0]">
               You are currently using our free tier. Upgrade to Premium to unlock advanced analytics and unlimited reports.
             </p>
             <Button
               onClick={() => router.push('/plans')}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-[#0A84FF] hover:bg-[#409CFF] text-white"
             >
               View Premium Plans <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -74,29 +74,29 @@ export default function BillingPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold text-white mb-2">Billing</h1>
-        <p className="text-slate-400">Manage your subscription and payments</p>
+        <p className="text-[#A0A0A0]">Manage your subscription and payments</p>
       </div>
 
       {/* Current Subscription */}
-      <Card className="bg-slate-900 border-slate-700">
+      <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
         <CardHeader>
           <CardTitle className="text-white">Current Subscription</CardTitle>
-          <CardDescription>Your active plan and billing details</CardDescription>
+          <CardDescription className="text-[#8E8E93]">Your active plan and billing details</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <p className="text-sm text-slate-400">Plan</p>
+              <p className="text-sm text-[#A0A0A0]">Plan</p>
               <p className="text-lg font-semibold text-white mt-1">Premium Monthly</p>
               <Badge className="mt-2 bg-purple-600 text-white">Active</Badge>
             </div>
             <div>
-              <p className="text-sm text-slate-400">Amount</p>
+              <p className="text-sm text-[#A0A0A0]">Amount</p>
               <p className="text-lg font-semibold text-white mt-1">$9.99/month</p>
             </div>
             <div>
-              <p className="text-sm text-slate-400">Billing Cycle</p>
-              <p className="text-slate-300 mt-1">
+              <p className="text-sm text-[#A0A0A0]">Billing Cycle</p>
+              <p className="text-[#A0A0A0] mt-1">
                 {userSubscription ? (
                   <>
                     {new Date(userSubscription.startDate).toLocaleDateString()} - {new Date(userSubscription.endDate).toLocaleDateString()}
@@ -107,18 +107,18 @@ export default function BillingPage() {
               </p>
             </div>
             <div>
-              <p className="text-sm text-slate-400">Next Billing Date</p>
-              <p className="text-slate-300 mt-1">
+              <p className="text-sm text-[#A0A0A0]">Next Billing Date</p>
+              <p className="text-[#A0A0A0] mt-1">
                 {userSubscription ? new Date(userSubscription.endDate).toLocaleDateString() : 'N/A'}
               </p>
             </div>
           </div>
 
-          <div className="border-t border-slate-700 pt-6 flex gap-3">
+          <div className="border-t border-[#2C2C2E] pt-6 flex gap-3">
             <Button
               onClick={() => router.push('/plans')}
               variant="outline"
-              className="border-slate-600 text-slate-300 hover:bg-slate-800"
+              className="border-[#3A3A3C] text-[#A0A0A0] hover:bg-[#2C2C2E]"
             >
               Change Plan
             </Button>
@@ -133,33 +133,33 @@ export default function BillingPage() {
       </Card>
 
       {/* Payment History */}
-      <Card className="bg-slate-900 border-slate-700">
+      <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
         <CardHeader>
           <CardTitle className="text-white">Payment History</CardTitle>
-          <CardDescription>Your invoices and past transactions</CardDescription>
+          <CardDescription className="text-[#8E8E93]">Your invoices and past transactions</CardDescription>
         </CardHeader>
         <CardContent>
           {userPayments.length === 0 ? (
-            <p className="text-slate-400">No payments found.</p>
+            <p className="text-[#A0A0A0]">No payments found.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-slate-700">
-                    <th className="text-left py-3 px-4 font-semibold text-slate-300">Invoice</th>
-                    <th className="text-left py-3 px-4 font-semibold text-slate-300">Date</th>
-                    <th className="text-left py-3 px-4 font-semibold text-slate-300">Amount</th>
-                    <th className="text-left py-3 px-4 font-semibold text-slate-300">Status</th>
-                    <th className="text-right py-3 px-4 font-semibold text-slate-300">Action</th>
+                  <tr className="border-b border-[#2C2C2E]">
+                    <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Invoice</th>
+                    <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Date</th>
+                    <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Amount</th>
+                    <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Status</th>
+                    <th className="text-right py-3 px-4 font-semibold text-[#A0A0A0]">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {userPayments.map((payment) => (
-                    <tr key={payment.id} className="border-b border-slate-700/50 hover:bg-slate-800/30">
-                      <td className="py-3 px-4 font-mono text-slate-300">
+                    <tr key={payment.id} className="border-b border-[#2C2C2E]/50 hover:bg-[#2C2C2E]/30">
+                      <td className="py-3 px-4 font-mono text-[#A0A0A0]">
                         INV-{payment.id.substring(0, 8).toUpperCase()}
                       </td>
-                      <td className="py-3 px-4 text-slate-400">
+                      <td className="py-3 px-4 text-[#8E8E93]">
                         {new Date(payment.createdAt).toLocaleDateString()}
                       </td>
                       <td className="py-3 px-4 font-semibold text-white">
@@ -180,7 +180,7 @@ export default function BillingPage() {
                         <Button
                           size="sm"
                           variant="outline"
-                          className="h-8 px-2 text-xs border-slate-600 text-slate-300 hover:bg-slate-700 gap-1"
+                          className="h-8 px-2 text-xs border-[#3A3A3C] text-[#A0A0A0] hover:bg-[#2C2C2E] gap-1"
                           onClick={() => handleDownloadInvoice(payment.id)}
                         >
                           <Download size={14} />
@@ -197,23 +197,23 @@ export default function BillingPage() {
       </Card>
 
       {/* Billing Information */}
-      <Card className="bg-slate-900 border-slate-700">
+      <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
         <CardHeader>
           <CardTitle className="text-white">Billing Information</CardTitle>
-          <CardDescription>Your account details</CardDescription>
+          <CardDescription className="text-[#8E8E93]">Your account details</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <p className="text-sm text-slate-400">Account Name</p>
-            <p className="text-slate-300 mt-1">{user.name}</p>
+            <p className="text-sm text-[#A0A0A0]">Account Name</p>
+            <p className="text-[#A0A0A0] mt-1">{user.name}</p>
           </div>
           <div>
-            <p className="text-sm text-slate-400">Email</p>
-            <p className="text-slate-300 mt-1">{user.email}</p>
+            <p className="text-sm text-[#A0A0A0]">Email</p>
+            <p className="text-[#A0A0A0] mt-1">{user.email}</p>
           </div>
           <div>
-            <p className="text-sm text-slate-400">Account Status</p>
-            <p className="text-slate-300 mt-1">Active</p>
+            <p className="text-sm text-[#A0A0A0]">Account Status</p>
+            <p className="text-[#A0A0A0] mt-1">Active</p>
           </div>
         </CardContent>
       </Card>

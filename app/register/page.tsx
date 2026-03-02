@@ -93,24 +93,24 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#000000] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-white mb-2">iPhone Analytics</h1>
-          <p className="text-slate-400">Create Your Account</p>
+          <h1 className="text-3xl font-semibold text-white mb-2">iPhone Analytics</h1>
+          <p className="text-[#A0A0A0]">Create Your Account</p>
         </div>
 
         {/* Register Card */}
-        <Card className="border-slate-700 bg-slate-800/50 backdrop-blur-sm">
+        <Card className="border-[#2C2C2E] bg-[#1C1C1E]">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-white">Create Account</CardTitle>
-            <CardDescription>Sign up to get started with analytics</CardDescription>
+            <CardTitle className="text-white text-base font-semibold">Create Account</CardTitle>
+            <CardDescription className="text-[#8E8E93]">Sign up to get started with analytics</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">Full Name</label>
+                <label className="text-sm font-medium text-[#A0A0A0]">Full Name</label>
                 <Input
                   type="text"
                   name="name"
@@ -118,11 +118,11 @@ export default function RegisterPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-500"
+                  className="bg-[#2C2C2E] border-[#3A3A3C] text-white placeholder:text-[#8E8E93]"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">Email</label>
+                <label className="text-sm font-medium text-[#A0A0A0]">Email</label>
                 <Input
                   type="email"
                   name="email"
@@ -130,11 +130,11 @@ export default function RegisterPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-500"
+                  className="bg-[#2C2C2E] border-[#3A3A3C] text-white placeholder:text-[#8E8E93]"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">Password</label>
+                <label className="text-sm font-medium text-[#A0A0A0]">Password</label>
                 <Input
                   type="password"
                   name="password"
@@ -142,11 +142,11 @@ export default function RegisterPage() {
                   value={formData.password}
                   onChange={handleChange}
                   required
-                  className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-500"
+                  className="bg-[#2C2C2E] border-[#3A3A3C] text-white placeholder:text-[#8E8E93]"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">Confirm Password</label>
+                <label className="text-sm font-medium text-[#A0A0A0]">Confirm Password</label>
                 <Input
                   type="password"
                   name="confirmPassword"
@@ -154,13 +154,13 @@ export default function RegisterPage() {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   required
-                  className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-500"
+                  className="bg-[#2C2C2E] border-[#3A3A3C] text-white placeholder:text-[#8E8E93]"
                 />
               </div>
               <Button 
                 type="submit" 
                 disabled={isLoading}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                className="w-full bg-[#0A84FF] hover:bg-[#409CFF] text-white font-semibold"
               >
                 {isLoading ? 'Creating Account...' : 'Create Account'}
               </Button>
@@ -169,9 +169,9 @@ export default function RegisterPage() {
         </Card>
 
         {/* Sign In Link */}
-        <div className="mt-4 text-center text-sm text-slate-400">
+        <div className="mt-4 text-center text-sm text-[#8E8E93]">
           Already have an account?{' '}
-          <Link href="/login" className="text-blue-400 hover:text-blue-300 font-medium">
+          <Link href="/login" className="text-[#0A84FF] hover:text-[#409CFF] font-medium">
             Sign in
           </Link>
         </div>

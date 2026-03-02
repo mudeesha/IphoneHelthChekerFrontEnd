@@ -80,16 +80,6 @@ export function UploadArea() {
   const handleUpload = async () => {
     if (!uploadedFile) return;
 
-    if (!user) {
-      localStorage.setItem('pendingFile', uploadedFile.name);
-      toast({
-        title: 'Please sign in',
-        description: 'Create an account or log in to view your report.',
-      });
-      router.push('/register');
-      return;
-    }
-
     toast({
       title: 'Upload successful',
       description: 'Your report is being processed...',
