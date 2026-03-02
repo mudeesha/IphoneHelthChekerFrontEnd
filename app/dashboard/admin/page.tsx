@@ -43,7 +43,7 @@ export default function AdminPage() {
   if (user?.role !== 'admin') {
     return (
       <div className="space-y-4">
-        <Card className="bg-slate-900 border-slate-700">
+        <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
           <CardHeader>
             <CardTitle className="text-red-400 flex items-center gap-2">
               <AlertCircle size={20} />
@@ -51,7 +51,7 @@ export default function AdminPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-slate-300">
+            <p className="text-[#A0A0A0]">
               You do not have permission to access the admin dashboard.
             </p>
           </CardContent>
@@ -103,86 +103,86 @@ export default function AdminPage() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-white mb-2">Admin Dashboard</h1>
-        <p className="text-slate-400">Manage users, subscriptions, and platform health</p>
+        <p className="text-[#A0A0A0]">Manage users, subscriptions, and platform health</p>
       </div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="bg-slate-900 border-slate-700">
+        <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
           <CardHeader className="pb-3">
-            <CardTitle className="text-slate-200 text-sm font-medium flex items-center justify-between">
+            <CardTitle className="text-[#A0A0A0] text-sm font-medium flex items-center justify-between">
               <span>Total Users</span>
               <Users className="text-blue-400" size={18} />
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">{users.length}</div>
-            <p className="text-xs text-slate-400 mt-1">Registered accounts</p>
+            <p className="text-xs text-[#8E8E93] mt-1">Registered accounts</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900 border-slate-700">
+        <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
           <CardHeader className="pb-3">
-            <CardTitle className="text-slate-200 text-sm font-medium flex items-center justify-between">
+            <CardTitle className="text-[#A0A0A0] text-sm font-medium flex items-center justify-between">
               <span>Premium Users</span>
               <TrendingUp className="text-purple-400" size={18} />
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">{premiumUsers}</div>
-            <p className="text-xs text-slate-400 mt-1">Active subscriptions</p>
+            <p className="text-xs text-[#8E8E93] mt-1">Active subscriptions</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900 border-slate-700">
+        <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
           <CardHeader className="pb-3">
-            <CardTitle className="text-slate-200 text-sm font-medium flex items-center justify-between">
+            <CardTitle className="text-[#A0A0A0] text-sm font-medium flex items-center justify-between">
               <span>Total Revenue</span>
               <CreditCard className="text-green-400" size={18} />
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">${totalRevenue.toFixed(2)}</div>
-            <p className="text-xs text-slate-400 mt-1">All time</p>
+            <p className="text-xs text-[#8E8E93] mt-1">All time</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900 border-slate-700">
+        <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
           <CardHeader className="pb-3">
-            <CardTitle className="text-slate-200 text-sm font-medium">Conversion Rate</CardTitle>
+            <CardTitle className="text-[#A0A0A0] text-sm font-medium">Conversion Rate</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">
               {((premiumUsers / users.length) * 100).toFixed(1)}%
             </div>
-            <p className="text-xs text-slate-400 mt-1">Free to premium</p>
+            <p className="text-xs text-[#8E8E93] mt-1">Free to premium</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Users Management */}
-      <Card className="bg-slate-900 border-slate-700">
+      <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
         <CardHeader>
           <CardTitle className="text-white">Users</CardTitle>
-          <CardDescription>Manage user accounts and subscriptions</CardDescription>
+          <CardDescription className="text-[#8E8E93]">Manage user accounts and subscriptions</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-700">
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Name</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Email</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Role</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Joined</th>
-                  <th className="text-right py-3 px-4 font-semibold text-slate-300">Actions</th>
+                <tr className="border-b border-[#2C2C2E]">
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Name</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Email</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Role</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Joined</th>
+                  <th className="text-right py-3 px-4 font-semibold text-[#A0A0A0]">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {users.map((u) => (
-                  <tr key={u.id} className="border-b border-slate-700/50 hover:bg-slate-800/30">
+                  <tr key={u.id} className="border-b border-[#2C2C2E]/50 hover:bg-[#2C2C2E]/30">
                     <td className="py-3 px-4 font-semibold text-white">{u.name}</td>
-                    <td className="py-3 px-4 text-slate-300">{u.email}</td>
+                    <td className="py-3 px-4 text-[#A0A0A0]">{u.email}</td>
                     <td className="py-3 px-4">
                       <Badge className={
                         u.role === 'premium'
@@ -194,7 +194,7 @@ export default function AdminPage() {
                         {u.role}
                       </Badge>
                     </td>
-                    <td className="py-3 px-4 text-slate-400">
+                    <td className="py-3 px-4 text-[#8E8E93]">
                       {new Date(u.createdAt).toLocaleDateString()}
                     </td>
                     <td className="py-3 px-4 text-right">
@@ -202,14 +202,14 @@ export default function AdminPage() {
                         <Button
                           size="sm"
                           variant="outline"
-                          className="h-8 px-3 text-xs border-slate-600 text-slate-300 hover:bg-slate-700"
+                          className="h-8 px-3 text-xs border-[#3A3A3C] text-[#A0A0A0] hover:bg-[#2C2C2E]"
                           onClick={() => setViewUserDialog(u.id)}
                         >
                           View
                         </Button>
                         <Button
                           size="sm"
-                          className="h-8 px-3 text-xs bg-blue-600 hover:bg-blue-700"
+                          className="h-8 px-3 text-xs bg-[#0A84FF] hover:bg-[#409CFF]"
                           onClick={() => handleEditUser(u.id)}
                         >
                           Edit
@@ -232,29 +232,29 @@ export default function AdminPage() {
       </Card>
 
       {/* Subscriptions */}
-      <Card className="bg-slate-900 border-slate-700">
+      <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
         <CardHeader>
           <CardTitle className="text-white">Subscriptions</CardTitle>
-          <CardDescription>Active and inactive subscription plans</CardDescription>
+          <CardDescription className="text-[#8E8E93]">Active and inactive subscription plans</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-700">
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">User</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Plan</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Status</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Start Date</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">End Date</th>
+                <tr className="border-b border-[#2C2C2E]">
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">User</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Plan</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Status</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Start Date</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">End Date</th>
                 </tr>
               </thead>
               <tbody>
                 {mockSubscriptions.map((sub) => {
                   const subUser = users.find(u => u.id === sub.userId);
                   return (
-                    <tr key={sub.id} className="border-b border-slate-700/50 hover:bg-slate-800/30">
-                      <td className="py-3 px-4 text-slate-300">{subUser?.name}</td>
+                    <tr key={sub.id} className="border-b border-[#2C2C2E]/50 hover:bg-[#2C2C2E]/30">
+                      <td className="py-3 px-4 text-[#A0A0A0]">{subUser?.name}</td>
                       <td className="py-3 px-4">
                         <Badge className={
                           sub.tier === 'premium'
@@ -275,10 +275,10 @@ export default function AdminPage() {
                           {sub.status}
                         </Badge>
                       </td>
-                      <td className="py-3 px-4 text-slate-400">
+                      <td className="py-3 px-4 text-[#8E8E93]">
                         {new Date(sub.startDate).toLocaleDateString()}
                       </td>
-                      <td className="py-3 px-4 text-slate-400">
+                      <td className="py-3 px-4 text-[#8E8E93]">
                         {new Date(sub.endDate).toLocaleDateString()}
                       </td>
                     </tr>
@@ -291,28 +291,28 @@ export default function AdminPage() {
       </Card>
 
       {/* Payments */}
-      <Card className="bg-slate-900 border-slate-700">
+      <Card className="bg-[#1C1C1E] border-[#2C2C2E]">
         <CardHeader>
           <CardTitle className="text-white">Recent Payments</CardTitle>
-          <CardDescription>Transaction history</CardDescription>
+          <CardDescription className="text-[#8E8E93]">Transaction history</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-700">
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">User</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Amount</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Status</th>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-300">Date</th>
+                <tr className="border-b border-[#2C2C2E]">
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">User</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Amount</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Status</th>
+                  <th className="text-left py-3 px-4 font-semibold text-[#A0A0A0]">Date</th>
                 </tr>
               </thead>
               <tbody>
                 {mockPayments.map((payment) => {
                   const paymentUser = users.find(u => u.id === payment.userId);
                   return (
-                    <tr key={payment.id} className="border-b border-slate-700/50 hover:bg-slate-800/30">
-                      <td className="py-3 px-4 text-slate-300">{paymentUser?.name}</td>
+                    <tr key={payment.id} className="border-b border-[#2C2C2E]/50 hover:bg-[#2C2C2E]/30">
+                      <td className="py-3 px-4 text-[#A0A0A0]">{paymentUser?.name}</td>
                       <td className="py-3 px-4 font-semibold text-white">
                         ${payment.amount.toFixed(2)} {payment.currency}
                       </td>
@@ -327,7 +327,7 @@ export default function AdminPage() {
                           {payment.status}
                         </Badge>
                       </td>
-                      <td className="py-3 px-4 text-slate-400">
+                      <td className="py-3 px-4 text-[#8E8E93]">
                         {new Date(payment.createdAt).toLocaleDateString()}
                       </td>
                     </tr>
@@ -341,7 +341,7 @@ export default function AdminPage() {
 
       {/* View User Dialog */}
       <Dialog open={!!viewUserDialog} onOpenChange={(open) => !open && setViewUserDialog(null)}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-white">
+        <DialogContent className="bg-[#1C1C1E] border-[#2C2C2E] text-white">
           <DialogHeader>
             <DialogTitle>User Details</DialogTitle>
             <DialogDescription>View user information</DialogDescription>
@@ -349,15 +349,15 @@ export default function AdminPage() {
           {viewingUser && (
             <div className="space-y-4">
               <div>
-                <Label className="text-slate-300">Name</Label>
+                <Label className="text-[#A0A0A0]">Name</Label>
                 <p className="mt-1 text-white font-medium">{viewingUser.name}</p>
               </div>
               <div>
-                <Label className="text-slate-300">Email</Label>
+                <Label className="text-[#A0A0A0]">Email</Label>
                 <p className="mt-1 text-white font-medium">{viewingUser.email}</p>
               </div>
               <div>
-                <Label className="text-slate-300">Role</Label>
+                <Label className="text-[#A0A0A0]">Role</Label>
                 <p className="mt-1">
                   <Badge className={
                     viewingUser.role === 'premium'
@@ -371,11 +371,11 @@ export default function AdminPage() {
                 </p>
               </div>
               <div>
-                <Label className="text-slate-300">Joined</Label>
+                <Label className="text-[#A0A0A0]">Joined</Label>
                 <p className="mt-1 text-white font-medium">{new Date(viewingUser.createdAt).toLocaleDateString()}</p>
               </div>
               <div>
-                <Label className="text-slate-300">Subscription Status</Label>
+                <Label className="text-[#A0A0A0]">Subscription Status</Label>
                 <p className="mt-1 text-white font-medium">{viewingUser.role === 'premium' ? 'Active' : 'Free Tier'}</p>
               </div>
             </div>
@@ -383,7 +383,7 @@ export default function AdminPage() {
           <DialogFooter>
             <Button
               variant="outline"
-              className="border-slate-600 text-slate-300 hover:bg-slate-800"
+              className="border-[#3A3A3C] text-[#A0A0A0] hover:bg-[#2C2C2E]"
               onClick={() => setViewUserDialog(null)}
             >
               Close
@@ -394,7 +394,7 @@ export default function AdminPage() {
 
       {/* Edit User Dialog */}
       <Dialog open={!!editUserDialog} onOpenChange={(open) => !open && setEditUserDialog(null)}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-white">
+        <DialogContent className="bg-[#1C1C1E] border-[#2C2C2E] text-white">
           <DialogHeader>
             <DialogTitle>Edit User</DialogTitle>
             <DialogDescription>Update user information</DialogDescription>
@@ -402,23 +402,23 @@ export default function AdminPage() {
           {editUserDialog && (
             <div className="space-y-4">
               <div>
-                <Label className="text-slate-300">Name</Label>
+                <Label className="text-[#A0A0A0]">Name</Label>
                 <Input
                   value={editUserDialog.name}
                   onChange={(e) => setEditUserDialog({ ...editUserDialog, name: e.target.value })}
-                  className="mt-1 bg-slate-800 border-slate-700 text-white"
+                  className="mt-1 bg-[#2C2C2E] border-[#3A3A3C] text-white"
                 />
               </div>
               <div>
-                <Label className="text-slate-300">Role</Label>
+                <Label className="text-[#A0A0A0]">Role</Label>
                 <Select
                   value={editUserDialog.role}
                   onValueChange={(value) => setEditUserDialog({ ...editUserDialog, role: value as 'user' | 'admin' | 'premium' })}
                 >
-                  <SelectTrigger className="mt-1 bg-slate-800 border-slate-700 text-white">
+                  <SelectTrigger className="mt-1 bg-[#2C2C2E] border-[#3A3A3C] text-white">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-slate-800 border-slate-700">
+                  <SelectContent className="bg-[#2C2C2E] border-[#3A3A3C]">
                     <SelectItem value="user">User</SelectItem>
                     <SelectItem value="premium">Premium</SelectItem>
                     <SelectItem value="admin">Admin</SelectItem>
@@ -430,13 +430,13 @@ export default function AdminPage() {
           <DialogFooter>
             <Button
               variant="outline"
-              className="border-slate-600 text-slate-300 hover:bg-slate-800"
+              className="border-[#3A3A3C] text-[#A0A0A0] hover:bg-[#2C2C2E]"
               onClick={() => setEditUserDialog(null)}
             >
               Cancel
             </Button>
             <Button
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-[#0A84FF] hover:bg-[#409CFF]"
               onClick={handleSaveEdit}
             >
               Save Changes
@@ -447,14 +447,14 @@ export default function AdminPage() {
 
       {/* Delete User Dialog */}
       <Dialog open={!!deleteUserDialog} onOpenChange={(open) => !open && setDeleteUserDialog(null)}>
-        <DialogContent className="bg-slate-900 border-slate-700 text-white">
+        <DialogContent className="bg-[#1C1C1E] border-[#2C2C2E] text-white">
           <DialogHeader>
             <DialogTitle>Delete User</DialogTitle>
             <DialogDescription>This action cannot be undone</DialogDescription>
           </DialogHeader>
           {deletingUser && (
             <div>
-              <p className="text-slate-300">
+              <p className="text-[#A0A0A0]">
                 Are you sure you want to delete <span className="font-semibold text-white">{deletingUser.name}</span>? This will permanently remove all their data and reports.
               </p>
             </div>
@@ -462,7 +462,7 @@ export default function AdminPage() {
           <DialogFooter>
             <Button
               variant="outline"
-              className="border-slate-600 text-slate-300 hover:bg-slate-800"
+              className="border-[#3A3A3C] text-[#A0A0A0] hover:bg-[#2C2C2E]"
               onClick={() => setDeleteUserDialog(null)}
             >
               Cancel
